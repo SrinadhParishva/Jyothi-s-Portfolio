@@ -1,0 +1,2249 @@
+/* Newsreader Self-Hosted Variable Web Fonts */
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/newsreader-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/newsreader-normal-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/newsreader-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/newsreader-italic-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* night to morning */
+  --night: #0f0b14;
+  --indigo: #191326;
+  --plum: #2b1829;
+  --ember: #461621;
+  --dawn: #c77a4c;
+  --sandal: #f1dfbc;
+  --kumkum: #8e1824;
+
+  --moon: #ebe3d7;       /* text on dark */
+  --ash: #a79db0;        /* muted on dark */
+  --flame: #e7a846;      /* diya */
+  --soil: #28170f;       /* text on light */
+  --clay: #6d4a36;       /* muted on light */
+
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --measure: 100%;
+  --gutter: clamp(22px, 6vw, 72px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --sandal: #e6d2ac; }
+}
+:root[data-theme="dark"] { --sandal: #e6d2ac; }
+
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); background: var(--night); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--moon);
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-size: clamp(1.12rem, 1.02rem + 0.4vw, 1.3rem);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+p, h1, h2, h3, blockquote { margin: 0; }
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--flame); outline-offset: 4px; border-radius: 2px; }
+img { max-width: 100%; }
+
+/* ---------- hero ---------- */
+.hero {
+  min-height: 92svh;
+  display: grid;
+  align-content: center;
+  padding: 6rem var(--gutter) 4rem;
+  background: var(--night);
+  position: relative;
+}
+.whisper {
+  font-style: italic;
+  color: var(--ash);
+  font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem);
+  animation: appear .6s ease .15s both;
+}
+.hero h1 {
+  margin-top: .6rem;
+  font-weight: 300;
+  font-size: clamp(3.4rem, 1.8rem + 9vw, 9rem);
+  line-height: .95;
+  letter-spacing: -0.02em;
+  animation: appear .7s ease .25s both;
+}
+.hero .entity-intro {
+  margin-top: 1.15rem;
+  max-width: 34rem;
+  font-size: clamp(1.08rem, 0.98rem + 0.35vw, 1.28rem);
+  color: #d6ccbe;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  animation: appear .6s ease .32s both;
+}
+.hero .entity-intro a {
+  color: var(--moon);
+  text-decoration: underline;
+  text-decoration-color: rgba(231, 168, 70, 0.55);
+  text-underline-offset: 4px;
+  transition: color .2s ease, text-decoration-color .2s ease;
+}
+.hero .entity-intro a:hover {
+  color: var(--flame);
+  text-decoration-color: var(--flame);
+}
+.hero .sub {
+  margin-top: 1.3rem;
+  max-width: 30rem;
+  font-size: clamp(1.2rem, 1.05rem + .6vw, 1.5rem);
+  line-height: 1.5;
+  animation: appear .6s ease .4s both;
+}
+.hero .where {
+  margin-top: 2rem;
+  color: var(--ash);
+  font-size: 1rem;
+  animation: appear .6s ease .5s both;
+}
+@keyframes kindle { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: none; } }
+@keyframes flicker { 0%,100% { transform: scale(1) rotate(0); } 40% { transform: scale(1.06, .95) rotate(-3deg); } 70% { transform: scale(.96, 1.05) rotate(2deg); } }
+@keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------- chapters ---------- */
+.ch {
+  padding: clamp(2.8rem, 6vw, 4.8rem) var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+@media (min-width: 900px) {
+  .ch { grid-template-columns: 12rem 1fr; column-gap: 4rem; row-gap: 0; justify-content: center; }
+  .ch > .mark-badge { grid-row: 1 / span 20; padding-top: .9rem; justify-content: flex-end; }
+  .ch > :not(.mark-badge) { grid-column: 2; }
+}
+.mark-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+.sec-num {
+  font-family: "Newsreader", serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  background: rgba(231, 168, 70, 0.14);
+  color: var(--flame);
+  border: 1px solid rgba(231, 168, 70, 0.32);
+}
+.t-dawn .sec-num, .t-sandal .sec-num {
+  background: rgba(180, 110, 20, 0.12);
+  color: #a45d0f;
+  border-color: rgba(180, 110, 20, 0.3);
+}
+.mark { font-style: italic; font-size: 1.05rem; opacity: .85; }
+.mark::before, .mark-badge .mark::before { display: none !important; content: none !important; }
+.ch h2 {
+  font-weight: 300;
+  font-size: clamp(2.3rem, 1.6rem + 3.2vw, 3.8rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.2rem;
+}
+.ch p { max-width: 100%; }
+.ch p + p { margin-top: 1.1rem; }
+.ch .held {
+  margin-top: 2.4rem;
+  font-style: italic;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.2rem);
+  line-height: 1.25;
+}
+
+.t-night  { background: var(--night);  color: var(--moon); }
+.t-indigo { background: var(--indigo); color: var(--moon); }
+.t-plum   { background: var(--plum);   color: var(--moon); }
+.t-ember  { background: var(--ember);  color: #f6e8da; }
+.t-dawn   { background: var(--dawn);   color: var(--soil); }
+.t-sandal { background: var(--sandal); color: var(--soil); }
+.t-kumkum { background: var(--kumkum); color: #f7e7d2; }
+
+/* ==========================================================================
+   Seams: Smooth, Artisanal Background Transitions Between Every Chapter
+   ========================================================================== */
+
+.seam {
+  position: relative;
+  display: block;
+  width: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Delicate golden filament line running horizontally through the transition */
+.seam::before {
+  content: "";
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  top: 50%;
+  height: 1px;
+  background: radial-gradient(ellipse at center, rgba(231, 168, 70, 0.35) 0%, rgba(231, 168, 70, 0.1) 45%, transparent 80%);
+  transform: translateY(-50%);
+  opacity: 0.75;
+}
+
+/* 00 -> 02: Hero (Night #0f0b14) to Childhood (Indigo/Night #191326) */
+.seam.s0 {
+  height: clamp(50px, 7vh, 80px);
+  background: linear-gradient(180deg, #0f0b14 0%, #130e1d 50%, #191326 100%);
+}
+
+/* 02 -> 03: Childhood to Growing Up */
+.seam.s1 {
+  height: clamp(50px, 7vh, 80px);
+  background: linear-gradient(180deg, #130c1a 0%, #160e22 50%, #191326 100%);
+}
+
+/* 03 -> 04: Growing Up to Finding My Way (Plum) */
+.seam.s2 {
+  height: clamp(55px, 8vh, 85px);
+  background: linear-gradient(180deg, #140d1e 0%, #1e1124 50%, #2b1829 100%);
+}
+
+/* 04 -> 05: Finding My Way (Plum) to Motherhood (Crimson) */
+.seam.s-plum-crimson {
+  height: clamp(55px, 8vh, 85px);
+  background: linear-gradient(180deg, #201022 0%, #271224 50%, #2b1424 100%);
+}
+
+/* 05 -> 06: Motherhood (Crimson) to Standing on My Own (Ember) */
+.seam.s3 {
+  height: clamp(60px, 9vh, 95px);
+  background: linear-gradient(180deg, #230f1d 0%, #34121e 50%, #461621 100%);
+}
+
+/* 06 -> 07: Standing on My Own (Ember) to The Question */
+.seam.s-ember-question {
+  height: clamp(60px, 9vh, 95px);
+  background: linear-gradient(180deg, #461621 0%, #3b121c 50%, #461621 100%);
+}
+
+/* 07 -> 08: The Question to Standing Up */
+.seam.s-question-standing {
+  height: clamp(60px, 9vh, 95px);
+  background: linear-gradient(180deg, #190a12 0%, #2b0f19 50%, #3c141e 100%);
+}
+
+/* 08 -> 09: Standing Up (Ember) to Returning to Myself (Sacred Dawn) */
+.seam.s4 {
+  height: clamp(65px, 10vh, 100px);
+  background: linear-gradient(180deg, #190910 0%, #2a1114 50%, #3d1b18 100%);
+}
+
+/* 09 -> 10: Returning to Myself (Dawn #2e1311) to Today (Sandalwood #f1dfbc)
+   The signature dawn-into-daylight illumination transition */
+.seam.s5 {
+  height: clamp(120px, 18vh, 200px);
+  background: linear-gradient(180deg, 
+    #2e1311 0%, 
+    #421a13 16%, 
+    #66291a 34%, 
+    #994723 52%, 
+    #cb7a3b 70%, 
+    #e2ae6e 86%, 
+    #f1dfbc 100%
+  );
+}
+.seam.s5::before {
+  background: radial-gradient(ellipse at center, rgba(255, 245, 230, 0.7) 0%, rgba(231, 168, 70, 0.3) 45%, transparent 80%);
+}
+
+/* 10 -> 11: Today (Sandalwood #cca56c) to Parishva NPO (Kumkum Sanctuary #8e1824)
+   Sandalwood daylight softly setting into sacred kumkum vermillion */
+.seam.s6 {
+  height: clamp(110px, 16vh, 190px);
+  background: linear-gradient(180deg, 
+    #cca56c 0%, 
+    #be7b52 18%, 
+    #aa4f3a 38%, 
+    #982a2e 62%, 
+    #901d26 82%, 
+    #8e1824 100%
+  );
+}
+.seam.s6::before {
+  background: radial-gradient(ellipse at center, rgba(247, 231, 210, 0.55) 0%, rgba(231, 168, 70, 0.28) 48%, transparent 80%);
+}
+
+/* 11 -> Footer: Parishva NPO (#8e1824) to Footer (#5e0f18) */
+.seam.s-npo-footer {
+  height: clamp(55px, 8vh, 85px);
+  background: linear-gradient(180deg, #8e1824 0%, #76141e 50%, #5e0f18 100%);
+}
+
+.aside { color: var(--ash); }
+.t-dawn .aside, .t-sandal .aside { color: var(--clay); }
+
+blockquote.pull {
+  margin: 2.6rem 0 .4rem;
+  font-style: italic;
+  font-size: clamp(1.7rem, 1.2rem + 2.2vw, 2.8rem);
+  line-height: 1.18;
+  max-width: 100%;
+}
+
+/* the question - enhanced centerpiece design */
+.question {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4rem, 9vw, 7.5rem) var(--gutter);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(70, 22, 33, 0.98) 0%, rgba(45, 15, 24, 0.95) 50%, rgba(25, 10, 18, 0.99) 100%);
+  color: #f6e8da;
+}
+
+.question .question-bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(231, 168, 70, 0.28) 0%, rgba(142, 24, 36, 0.12) 50%, rgba(15, 11, 20, 0) 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.question .question-card {
+  position: relative;
+  z-index: 1;
+  max-width: 58rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.8rem, 4vw, 3.5rem);
+  background: linear-gradient(135deg, rgba(231, 168, 70, 0.08) 0%, rgba(70, 22, 33, 0.4) 100%);
+  border: 1px solid rgba(231, 168, 70, 0.3);
+  border-radius: 24px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 20px 50px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+}
+
+.question .lead {
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.5rem);
+  color: #ebe3d7;
+  letter-spacing: 0.01em;
+}
+
+.question .ask {
+  margin: 2.2rem auto;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(3.6rem, 1.5rem + 11vw, 9.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 10%, #f7e7d2 50%, var(--flame) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 35px rgba(231, 168, 70, 0.45));
+}
+
+.question .question-reflection {
+  margin-top: 2.4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(231, 168, 70, 0.25);
+}
+
+.question .after {
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: clamp(1.15rem, 1.02rem + 0.4vw, 1.35rem);
+  color: #eed9c2;
+  line-height: 1.65;
+}
+
+.question .after + .after {
+  margin-top: 1.1rem;
+}
+
+/* today */
+.rhythm {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(40, 23, 15, .25);
+  font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.5rem);
+  line-height: 1.25;
+  font-style: italic;
+}
+.rhythm span { display: block; }
+.inline-link { text-underline-offset: .2em; text-decoration-thickness: 1px; }
+
+/* npo */
+.npo .nones { margin: 1rem 0 2rem; }
+.npo .nones p { font-size: clamp(1.3rem, 1.1rem + .9vw, 1.7rem); line-height: 1.4; }
+.npo .nones p + p { margin-top: .6rem; }
+.letter {
+  margin-top: 3rem;
+  padding: 2rem 0 0;
+  border-top: 1px solid rgba(247, 231, 210, .35);
+}
+.letter p { font-style: italic; }
+.cta {
+  display: inline-block;
+  margin-top: 2.6rem;
+  padding: .9rem 1.5rem;
+  background: #f7e7d2;
+  color: var(--kumkum);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 999px;
+  transition: background .2s;
+}
+.cta:hover { background: #fff3e2; }
+.cta:focus-visible { outline-color: #f7e7d2; }
+.help {
+  margin-top: 2.6rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: .9;
+}
+.help a { font-weight: 500; }
+
+footer {
+  background: #5e0f18;
+  color: #eed9c2;
+  padding: 2.4rem var(--gutter);
+  font-size: .98rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+footer em { opacity: .85; }
+footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem 1rem;
+}
+footer nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.92rem;
+  color: inherit;
+  opacity: 0.85;
+  text-decoration: underline;
+  text-decoration-color: rgba(238, 217, 194, 0.35);
+  text-underline-offset: 4px;
+  transition: color 0.2s ease, opacity 0.2s ease, text-decoration-color 0.2s ease;
+}
+footer nav a:hover {
+  opacity: 1;
+  color: #fff3e2;
+  text-decoration-color: var(--flame);
+}
+footer nav a:focus-visible {
+  outline: 2px solid var(--flame);
+  outline-offset: 3px;
+  border-radius: 2px;
+  opacity: 1;
+}
+@media (max-width: 820px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diya, .whisper, .hero h1, .hero .entity-intro, .hero .sub, .hero .where { animation: none; }
+  footer nav a { transition: none !important; }
+}
+
+/* ---------- emotion layer ---------- */
+.hero .note { margin-top: 1rem; max-width: 30rem; color: var(--ash); font-style: italic; font-size: 1.02rem; animation: appear .6s ease .6s both; }
+.scroll-cue { margin-top: 3rem; font-size: .95rem; color: var(--flame); letter-spacing: .02em; animation: appear .6s ease .7s both, drift 2.6s ease-in-out 1.3s infinite; }
+@keyframes drift { 50% { transform: translateY(6px); opacity: .6; } }
+
+/* the flame she carries: travels down the page, grows as the story brightens */
+.thread {
+  position: fixed; z-index: 5; pointer-events: none;
+  left: clamp(9px, 2.2vw, 34px);
+  top: calc(env(safe-area-inset-top, 0px) + 10vh); bottom: 10vh; width: 1px;
+  background: linear-gradient(transparent, rgba(231,168,70,.4) 15%, rgba(231,168,70,.4) 85%, transparent);
+  opacity: 0; transition: opacity .8s;
+}
+.thread.on { opacity: 1; }
+.thread .flame {
+  position: absolute; left: 50%;
+  top: calc(var(--p, 0) * 100%);
+  width: 8px; height: 12px; margin: -6px 0 0 -4px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: var(--flame);
+  box-shadow: 0 0 calc(8px + var(--p,0) * 26px) calc(3px + var(--p,0) * 12px) rgba(231,168,70,calc(.35 + var(--p,0) * .35));
+  animation: flicker 3.2s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Section & Element Transitions: Cinematic Editorial Reveal System
+   ========================================================================== */
+
+/* Section scroll-margin for smooth link navigation */
+.hero, .ch, .question, footer {
+  scroll-margin-top: clamp(1rem, 3vh, 3rem);
+}
+
+/* Sections entrance transitions */
+.js .ch,
+.js .question,
+.js footer {
+  opacity: 0.85;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js .ch.sec-in,
+.js .question.sec-in,
+.js footer.sec-in {
+  opacity: 1;
+}
+
+/* Editorial sticky badges on desktop for cohesive chapter reading */
+@media (min-width: 900px) {
+  .ch > .mark-badge,
+  .ch-featured .mark-badge,
+  .ch-featured-plum .mark-badge,
+  .ch-featured-crimson .mark-badge,
+  .ch-featured-amber .mark-badge,
+  .ch-featured-standing .mark-badge,
+  .ch-featured-dawn .mark-badge,
+  .ch-featured-sandal .mark-badge,
+  .ch-featured-npo .mark-badge {
+    position: sticky;
+    top: clamp(4.5rem, 11vh, 7.5rem);
+    align-self: start;
+    z-index: 3;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+}
+
+/* Standard narrative reveals */
+.js .rv,
+.js .ch-body > p:not(.held),
+.js .ch-body > .lead-text,
+.js .ch-body h2 {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js .rv.in,
+.js .sec-in .rv,
+.js .sec-in .ch-body > p,
+.js .sec-in .ch-body h2 {
+  opacity: 1;
+  transform: none;
+}
+.js .sec-in .ch-body h2 { transition-delay: 0.08s; }
+.js .sec-in .ch-body > p:nth-of-type(1) { transition-delay: 0.14s; }
+.js .sec-in .ch-body > p:nth-of-type(2) { transition-delay: 0.20s; }
+.js .sec-in .ch-body > p:nth-of-type(3) { transition-delay: 0.26s; }
+
+/* Chapter badges gliding in with precision */
+.js .rv-badge,
+.js .ch > .mark-badge,
+.js .ch-body .mark-badge {
+  opacity: 0;
+  transform: translateX(-12px) translateY(4px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js .rv-badge.in,
+.js .sec-in .rv-badge,
+.js .sec-in .mark-badge {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.04s;
+}
+
+/* Card & component container reveals with depth */
+.js .rv-card,
+.js .held-card, .js .held-card-healing, .js .held-card-independence, .js .held-card-courage, .js .held-card-shaping,
+.js .pull-card, .js .motherhood-hero-card, .js .motherhood-insight-box, .js .dawn-card, .js .divine-union-card,
+.js .ritual-card, .js .branding-house-card, .js .npo-letter-card, .js .question-card {
+  opacity: 0;
+  transform: translateY(22px) scale(0.99);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js .rv-card.in,
+.js .sec-in .rv-card,
+.js .sec-in .held-card, .js .sec-in .held-card-healing, .js .sec-in .held-card-independence, .js .sec-in .held-card-courage, .js .sec-in .held-card-shaping,
+.js .sec-in .pull-card, .js .sec-in .motherhood-hero-card, .js .sec-in .motherhood-insight-box, .js .sec-in .dawn-card, .js .sec-in .divine-union-card,
+.js .sec-in .ritual-card, .js .sec-in .branding-house-card, .js .sec-in .npo-letter-card, .js .sec-in .question-card {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.22s;
+}
+
+/* Experience pills pop reveal */
+.js .rv-pill {
+  opacity: 0;
+  transform: translateY(14px) scale(0.92);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--d, 0s);
+}
+.js .rv-pill.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Rhythm step reveals */
+.js .rv-step {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--d, 0s);
+}
+.js .rv-step.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* NPO pillars reveal */
+.js .rv-pillar {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--d, 0s);
+}
+.js .rv-pillar.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Signature held lines with blur */
+.js .held.rv {
+  transform: translateY(10px);
+  filter: blur(4px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
+  transition-delay: var(--d, 0s);
+}
+.js .held.rv.in {
+  filter: none;
+  transform: none;
+}
+.t-night .held, .t-indigo .held, .t-plum .held, .t-ember .held { color: #f2c77e; }
+.ch .held { position: relative; padding-left: 1.1rem; }
+.ch .held::before { content: ""; position: absolute; left: 0; top: .35em; bottom: .25em; width: 2px; background: currentColor; opacity: .55; }
+
+/* Centerpiece question words reveal */
+.js .ask .w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.3em);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js .ask.in .w { opacity: 1; transform: none; }
+.js .ask.in .w:nth-child(2) { transition-delay: .22s; }
+.js .ask.in .w:nth-child(3) { transition-delay: .44s; }
+.question .ask { text-shadow: 0 0 60px rgba(231,168,70,.35); }
+
+/* Universal Card Hover Micro-Transitions */
+.held-card,
+.held-card-healing,
+.held-card-independence,
+.held-card-courage,
+.held-card-shaping,
+.pull-card,
+.motherhood-hero-card,
+.motherhood-insight-box,
+.dawn-card,
+.divine-union-card,
+.ritual-card,
+.branding-house-card,
+.npo-letter-card,
+.question-card,
+.helpline-box {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.held-card:hover,
+.held-card-independence:hover,
+.held-card-courage:hover {
+  transform: translateY(-3px);
+  border-left-color: #ffd494;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 18px 45px rgba(0, 0, 0, 0.45);
+}
+
+.pull-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(231, 168, 70, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.ritual-card:hover,
+.branding-house-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 14px 35px rgba(40, 23, 15, 0.12);
+}
+
+.npo-letter-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(231, 168, 70, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 22px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* sunrise */
+.sunrise { position: relative; overflow: hidden; }
+.sunrise > :not(.sun) { position: relative; z-index: 1; }
+.sun { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .rv, .js .rv-card, .js .rv-badge, .js .rv-pill, .js .rv-step, .js .rv-pillar, .js .held.rv, .js .ask .w, .js .ch, .js .question, .js footer {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .thread .flame, .scroll-cue { animation: none; }
+}
+
+/* ---------- hero photo ---------- */
+.hero { overflow: hidden; }
+.hero-photo { position: absolute; inset: 0; z-index: 0; }
+.hero-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 78% 30%; display: block;
+  animation: lit 1.2s ease 0s both;
+}
+.hero-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, var(--night) 0%, rgba(15,11,20,.92) 28%, rgba(15,11,20,.35) 55%, rgba(15,11,20,0) 72%),
+    linear-gradient(0deg, var(--night) 0%, rgba(15,11,20,0) 22%);
+}
+.hero-text { position: relative; z-index: 1; max-width: 36rem; }
+.hero h1 { font-size: clamp(3.2rem, 1.6rem + 5.4vw, 6.6rem); }
+@keyframes lit { from { opacity: 0; filter: brightness(.35); } to { opacity: 1; filter: none; } }
+
+@media (max-width: 760px) {
+  .hero { padding: 0 0 3.5rem; align-content: start; min-height: 0; }
+  .hero-photo { position: relative; inset: auto; height: 64svh; min-height: 380px; }
+  .hero-photo img { object-position: 80% 25%; }
+  .hero-photo::after { background: linear-gradient(0deg, var(--night) 0%, rgba(15,11,20,.55) 22%, rgba(15,11,20,0) 48%); }
+  .hero-text { padding: 0 var(--gutter); margin-top: -4.5rem; }
+  .hero .diya { margin-bottom: 1.6rem; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-photo img { animation: none; } }
+
+/* ---------- Featured Chapter Card Design ---------- */
+.ch-featured {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  padding: clamp(2.8rem, 6vw, 4.8rem) var(--gutter);
+  background: linear-gradient(135deg, rgba(25, 19, 38, 0.95) 0%, rgba(43, 24, 41, 0.85) 50%, rgba(15, 11, 20, 0.98) 100%);
+  border: none;
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+}
+
+.ch-featured .ch-bg-glow {
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 65%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(142, 24, 36, 0.3) 0%, rgba(70, 22, 33, 0.12) 50%, rgba(15, 11, 20, 0) 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ch-featured .ch-body {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+}
+
+.ch-featured .mark-badge {
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured .mark-badge .mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem;
+  background: rgba(231, 168, 70, 0.12);
+  border: 1px solid rgba(231, 168, 70, 0.3);
+  border-radius: 999px;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--flame);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.ch-featured .mark-badge .mark::before {
+  display: none;
+}
+
+.ch-featured h2 {
+  font-weight: 300;
+  font-size: clamp(2.4rem, 1.8rem + 3.5vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 20%, #f1dfbc 80%, var(--flame) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.6rem;
+}
+
+.ch-featured .lead-text {
+  font-size: clamp(1.22rem, 1.08rem + 0.5vw, 1.45rem);
+  line-height: 1.7;
+  color: #ebe3d7;
+  margin-bottom: 1.2rem;
+}
+
+.ch-featured .held-card {
+  margin-top: 2.4rem;
+  padding: 1.8rem 2.4rem;
+  background: linear-gradient(135deg, rgba(70, 22, 33, 0.55) 0%, rgba(43, 24, 41, 0.45) 100%);
+  border-left: 4px solid var(--flame);
+  border-radius: 0 18px 18px 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 35px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.ch-featured .held-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(90deg, transparent, rgba(231, 168, 70, 0.06));
+  pointer-events: none;
+}
+
+.ch-featured .held-card .held {
+  margin-top: 0;
+  padding-left: 0;
+  font-size: clamp(1.4rem, 1.15rem + 1.2vw, 2.1rem);
+  line-height: 1.32;
+  color: #fce8c7;
+  font-style: italic;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured .held-card .held::before {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .ch-featured {
+    grid-template-columns: 13rem 1fr;
+    column-gap: 3.5rem;
+    row-gap: 0;
+    justify-content: center;
+  }
+  .ch-featured .mark-badge {
+    grid-row: 1 / span 20;
+    padding-top: 0.5rem;
+    text-align: right;
+  }
+  .ch-featured .ch-body {
+    grid-column: 2;
+  }
+}
+
+/* ---------- 3rd Section (Plum/Rose-Gold Theme) Enhanced Design ---------- */
+.ch-featured-plum {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  padding: clamp(2.8rem, 6vw, 4.8rem) var(--gutter);
+  background: linear-gradient(135deg, rgba(43, 24, 41, 0.95) 0%, rgba(70, 22, 33, 0.85) 60%, rgba(20, 10, 22, 0.98) 100%);
+  border: none;
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+}
+
+.ch-featured-plum .ch-plum-glow {
+  position: absolute;
+  bottom: -40%;
+  left: -15%;
+  width: 70%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(142, 24, 36, 0.4) 0%, rgba(70, 22, 33, 0.18) 50%, rgba(15, 11, 20, 0) 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ch-featured-plum .ch-body {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+}
+
+.ch-featured-plum .mark-badge {
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured-plum .mark-badge .mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem;
+  background: rgba(199, 122, 76, 0.15);
+  border: 1px solid rgba(231, 168, 70, 0.35);
+  border-radius: 999px;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sandal);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  opacity: 1;
+}
+
+.ch-featured-plum .mark-badge .mark::before {
+  display: none;
+}
+
+.ch-featured-plum h2 {
+  font-weight: 300;
+  font-size: clamp(2.4rem, 1.8rem + 3.5vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 15%, #f7e7d2 60%, var(--flame) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.6rem;
+}
+
+.ch-featured-plum .lead-text {
+  font-size: clamp(1.22rem, 1.08rem + 0.5vw, 1.45rem);
+  line-height: 1.7;
+  color: #ebe3d7;
+  margin-bottom: 1.2rem;
+}
+
+.ch-featured-plum .pull-card {
+  margin: 2.8rem 0 0.5rem;
+  padding: 2.2rem 2.6rem;
+  background: linear-gradient(135deg, rgba(70, 22, 33, 0.6) 0%, rgba(43, 24, 41, 0.5) 100%);
+  border: 1px solid rgba(231, 168, 70, 0.2);
+  border-radius: 20px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 15px 40px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.ch-featured-plum .pull-card .quote-mark {
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  font-size: 5.5rem;
+  line-height: 1;
+  font-family: var(--serif);
+  color: var(--flame);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.ch-featured-plum .pull-card p {
+  position: relative;
+  z-index: 1;
+  font-style: italic;
+  font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.5rem);
+  line-height: 1.22;
+  color: #fce8c7;
+  max-width: 100%;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 900px) {
+  .ch-featured-plum {
+    grid-template-columns: 13rem 1fr;
+    column-gap: 3.5rem;
+    row-gap: 0;
+    justify-content: center;
+  }
+  .ch-featured-plum .mark-badge {
+    grid-row: 1 / span 20;
+    padding-top: 0.5rem;
+    text-align: right;
+  }
+  .ch-featured-plum .ch-body {
+    grid-column: 2;
+  }
+}
+
+/* ---------- 4th Section (Crimson & Gold Theme) Enhanced Design ---------- */
+.ch-featured-crimson {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  padding: clamp(2.8rem, 6vw, 4.8rem) var(--gutter);
+  background: linear-gradient(135deg, rgba(50, 18, 30, 0.95) 0%, rgba(70, 22, 33, 0.88) 50%, rgba(30, 12, 22, 0.98) 100%);
+  border: none;
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+}
+
+.ch-featured-crimson .ch-crimson-glow {
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 65%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(142, 24, 36, 0.45) 0%, rgba(70, 22, 33, 0.15) 50%, rgba(15, 11, 20, 0) 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ch-featured-crimson .ch-body {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+}
+
+.ch-featured-crimson .mark-badge {
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured-crimson .mark-badge .mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem;
+  background: rgba(231, 168, 70, 0.12);
+  border: 1px solid rgba(231, 168, 70, 0.35);
+  border-radius: 999px;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sandal);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  opacity: 1;
+}
+
+.ch-featured-crimson .mark-badge .mark::before {
+  display: none;
+}
+
+.ch-featured-crimson h2 {
+  font-weight: 300;
+  font-size: clamp(2.4rem, 1.8rem + 3.5vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 20%, #f7e7d2 70%, var(--flame) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.6rem;
+}
+
+.ch-featured-crimson .lead-text {
+  font-size: clamp(1.22rem, 1.08rem + 0.5vw, 1.45rem);
+  line-height: 1.7;
+  color: #ebe3d7;
+  margin-bottom: 1.2rem;
+}
+
+.ch-featured-crimson .held-card-healing {
+  margin-top: 2.5rem;
+  padding: 1.8rem 2.4rem;
+  background: linear-gradient(135deg, rgba(142, 24, 36, 0.45) 0%, rgba(70, 22, 33, 0.55) 100%);
+  border-left: 4px solid var(--flame);
+  border-radius: 0 18px 18px 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 12px 35px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.ch-featured-crimson .held-card-healing::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(90deg, transparent, rgba(231, 168, 70, 0.08));
+  pointer-events: none;
+}
+
+.ch-featured-crimson .held-card-healing .held {
+  margin-top: 0;
+  padding-left: 0;
+  font-size: clamp(1.4rem, 1.15rem + 1.2vw, 2.1rem);
+  line-height: 1.32;
+  color: #fce8c7;
+  font-style: italic;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured-crimson .held-card-healing .held::before {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .ch-featured-crimson {
+    grid-template-columns: 13rem 1fr;
+    column-gap: 3.5rem;
+    row-gap: 0;
+    justify-content: center;
+  }
+  .ch-featured-crimson .mark-badge {
+    grid-row: 1 / span 20;
+    padding-top: 0.5rem;
+    text-align: right;
+  }
+  .ch-featured-crimson .ch-body {
+    grid-column: 2;
+  }
+}
+
+/* ---------- 6th Section (Warm Amber & Fire Theme) Enhanced Design ---------- */
+.ch-featured-amber {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  padding: clamp(2.8rem, 6vw, 4.8rem) var(--gutter);
+  background: var(--ember);
+  border: none;
+  box-shadow: none;
+}
+
+.ch-featured-amber .ch-amber-glow {
+  display: none;
+}
+
+.ch-featured-amber .ch-body {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+}
+
+.ch-featured-amber .mark-badge {
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured-amber .mark-badge .mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem;
+  background: rgba(231, 168, 70, 0.15);
+  border: 1px solid rgba(231, 168, 70, 0.35);
+  border-radius: 999px;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--flame);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  opacity: 1;
+}
+
+.ch-featured-amber .mark-badge .mark::before {
+  display: none;
+}
+
+.ch-featured-amber h2 {
+  font-weight: 300;
+  font-size: clamp(2.4rem, 1.8rem + 3.5vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 20%, #f7e7d2 70%, var(--flame) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.6rem;
+}
+
+.ch-featured-amber .lead-text {
+  font-size: clamp(1.22rem, 1.08rem + 0.5vw, 1.45rem);
+  line-height: 1.7;
+  color: #ebe3d7;
+  margin-bottom: 1.2rem;
+}
+
+/* Experience Pills Styling */
+.experience-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.8rem;
+  margin: 1.4rem 0 1.6rem;
+}
+
+.experience-pills .pill {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  background: rgba(231, 168, 70, 0.1);
+  border: 1px solid rgba(231, 168, 70, 0.28);
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #f7e7d2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.experience-pills .pill:hover {
+  background: rgba(231, 168, 70, 0.22);
+  border-color: rgba(231, 168, 70, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(231, 168, 70, 0.25);
+}
+
+.ch-featured-amber .held-card-independence {
+  margin-top: 2.5rem;
+  padding: 1.8rem 2.4rem;
+  background: rgba(0, 0, 0, 0.22);
+  border-left: 4px solid var(--flame);
+  border-radius: 0 18px 18px 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 12px 35px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.ch-featured-amber .held-card-independence::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(90deg, transparent, rgba(231, 168, 70, 0.08));
+  pointer-events: none;
+}
+
+.ch-featured-amber .held-card-independence .held {
+  margin-top: 0;
+  padding-left: 0;
+  font-size: clamp(1.4rem, 1.15rem + 1.2vw, 2.1rem);
+  line-height: 1.32;
+  color: #fce8c7;
+  font-style: italic;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured-amber .held-card-independence .held::before {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .ch-featured-amber {
+    grid-template-columns: 13rem 1fr;
+    column-gap: 3.5rem;
+    row-gap: 0;
+    justify-content: center;
+  }
+  .ch-featured-amber .mark-badge {
+    grid-row: 1 / span 20;
+    padding-top: 0.5rem;
+    text-align: right;
+  }
+  .ch-featured-amber .ch-body {
+    grid-column: 2;
+  }
+}
+
+/* ---------- Chapter 6 (Standing Up - Courage & Freedom) Enhanced Design ---------- */
+.ch-featured-standing {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  padding: clamp(2.8rem, 6vw, 4.8rem) var(--gutter);
+  background: linear-gradient(135deg, rgba(60, 20, 30, 0.95) 0%, rgba(45, 15, 24, 0.9) 50%, rgba(20, 10, 16, 0.98) 100%);
+  border: none;
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+}
+
+.ch-featured-standing .ch-standing-glow {
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 65%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(231, 168, 70, 0.3) 0%, rgba(142, 24, 36, 0.15) 50%, rgba(15, 11, 20, 0) 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ch-featured-standing .ch-body {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+}
+
+.ch-featured-standing .mark-badge {
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured-standing .mark-badge .mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem;
+  background: rgba(231, 168, 70, 0.15);
+  border: 1px solid rgba(231, 168, 70, 0.35);
+  border-radius: 999px;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--flame);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  opacity: 1;
+}
+
+.ch-featured-standing .mark-badge .mark::before {
+  display: none;
+}
+
+.ch-featured-standing h2 {
+  font-weight: 300;
+  font-size: clamp(2.4rem, 1.8rem + 3.5vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 20%, #f7e7d2 70%, var(--flame) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.6rem;
+}
+
+.ch-featured-standing .lead-text {
+  font-size: clamp(1.22rem, 1.08rem + 0.5vw, 1.45rem);
+  line-height: 1.7;
+  color: #ebe3d7;
+  margin-bottom: 1.2rem;
+}
+
+.ch-featured-standing .held-card-courage {
+  margin-top: 2.5rem;
+  padding: 1.8rem 2.4rem;
+  background: linear-gradient(135deg, rgba(70, 22, 33, 0.7) 0%, rgba(45, 18, 26, 0.8) 100%);
+  border-left: 4px solid var(--flame);
+  border-radius: 0 18px 18px 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 12px 35px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.ch-featured-standing .held-card-courage::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(90deg, transparent, rgba(231, 168, 70, 0.08));
+  pointer-events: none;
+}
+
+.ch-featured-standing .held-card-courage .held {
+  margin-top: 0;
+  padding-left: 0;
+  font-size: clamp(1.4rem, 1.15rem + 1.2vw, 2.1rem);
+  line-height: 1.32;
+  color: #fce8c7;
+  font-style: italic;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured-standing .held-card-courage .held::before {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .ch-featured-standing {
+    grid-template-columns: 13rem 1fr;
+    column-gap: 3.5rem;
+    row-gap: 0;
+    justify-content: center;
+  }
+  .ch-featured-standing .mark-badge {
+    grid-row: 1 / span 20;
+    padding-top: 0.5rem;
+    text-align: right;
+  }
+  .ch-featured-standing .ch-body {
+    grid-column: 2;
+  }
+}
+
+/* ---------- 8th Section (Golden Dawn & Spiritual Illuminations Theme) Enhanced Design ---------- */
+.ch-featured-dawn {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  padding: clamp(2.8rem, 6vw, 4.8rem) var(--gutter);
+  background: #854221;
+  color: #fcf4e8;
+  border: none;
+  box-shadow: none;
+}
+
+.ch-featured-dawn .ch-dawn-glow {
+  display: none;
+}
+
+.ch-featured-dawn .ch-body {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+}
+
+.ch-featured-dawn .mark-badge {
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured-dawn .mark-badge .mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem;
+  background: rgba(241, 223, 188, 0.2);
+  border: 1px solid rgba(241, 223, 188, 0.45);
+  border-radius: 999px;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff4e0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.ch-featured-dawn .mark-badge .mark::before {
+  display: none;
+}
+
+.ch-featured-dawn h2 {
+  font-weight: 300;
+  font-size: clamp(2.4rem, 1.8rem + 3.5vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 30%, #f1dfbc 70%, #ffd494 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.6rem;
+}
+
+.ch-featured-dawn .lead-text {
+  font-size: clamp(1.22rem, 1.08rem + 0.5vw, 1.45rem);
+  line-height: 1.7;
+  color: #fcefdc;
+  margin-bottom: 1.2rem;
+}
+
+.ch-featured-dawn .divine-union-card {
+  margin: 1.8rem 0;
+  padding: 1.4rem 1.8rem;
+  background: rgba(40, 18, 10, 0.35);
+  border: 1px solid rgba(241, 223, 188, 0.3);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.ch-featured-dawn .divine-union-card p {
+  font-size: clamp(1.12rem, 1.02rem + 0.4vw, 1.3rem);
+  line-height: 1.68;
+  color: #f7e7d2;
+}
+
+.ch-featured-dawn .held-card-shaping {
+  margin-top: 2.5rem;
+  padding: 1.8rem 2.4rem;
+  background: rgba(0, 0, 0, 0.22);
+  border-left: 4px solid #f1dfbc;
+  border-radius: 0 18px 18px 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 12px 35px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.ch-featured-dawn .held-card-shaping::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(90deg, transparent, rgba(241, 223, 188, 0.12));
+  pointer-events: none;
+}
+
+.ch-featured-dawn .held-card-shaping .held {
+  margin-top: 0;
+  padding-left: 0;
+  font-size: clamp(1.4rem, 1.15rem + 1.2vw, 2.1rem);
+  line-height: 1.32;
+  color: #fff4e0;
+  font-style: italic;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured-dawn .held-card-shaping .held::before {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .ch-featured-dawn {
+    grid-template-columns: 13rem 1fr;
+    column-gap: 3.5rem;
+    row-gap: 0;
+    justify-content: center;
+  }
+  .ch-featured-dawn .mark-badge {
+    grid-row: 1 / span 20;
+    padding-top: 0.5rem;
+    text-align: right;
+  }
+  .ch-featured-dawn .ch-body {
+    grid-column: 2;
+  }
+}
+
+/* ---------- 9th Section (Sandalwood & Present Harmony Theme) Enhanced Design ---------- */
+.ch-featured-sandal {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  padding: clamp(2.8rem, 6vw, 4.8rem) var(--gutter);
+  background: linear-gradient(135deg, #f1dfbc 0%, #e8cb9b 50%, #cca56c 100%);
+  color: #28170f;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: blur(16px);
+}
+
+.ch-featured-sandal .ch-sandal-glow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 70%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(241, 223, 188, 0.25) 50%, rgba(201, 167, 113, 0) 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ch-featured-sandal .ch-body {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+}
+
+.ch-featured-sandal .mark-badge {
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured-sandal .mark-badge .mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem;
+  background: rgba(40, 23, 15, 0.1);
+  border: 1px solid rgba(40, 23, 15, 0.25);
+  border-radius: 999px;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #3b1d0e;
+  box-shadow: 0 4px 15px rgba(40, 23, 15, 0.08);
+  opacity: 1;
+}
+
+.ch-featured-sandal .mark-badge .mark::before {
+  display: none;
+}
+
+.ch-featured-sandal h2 {
+  font-weight: 300;
+  font-size: clamp(2.4rem, 1.8rem + 3.5vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #1c0e07 20%, #462312 70%, #6d381c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.6rem;
+}
+
+.ch-featured-sandal .lead-text {
+  font-size: clamp(1.22rem, 1.08rem + 0.5vw, 1.45rem);
+  line-height: 1.7;
+  color: #2e190f;
+  margin-bottom: 1.4rem;
+}
+
+.ch-featured-sandal .ritual-card,
+.ch-featured-sandal .branding-house-card {
+  margin: 1.4rem 0;
+  padding: 1.5rem 1.8rem;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(40, 23, 15, 0.15);
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 8px 25px rgba(40, 23, 15, 0.06);
+  backdrop-filter: blur(10px);
+}
+
+.ch-featured-sandal .ritual-card p,
+.ch-featured-sandal .branding-house-card p {
+  font-size: clamp(1.12rem, 1.02rem + 0.4vw, 1.3rem);
+  line-height: 1.68;
+  color: #28170f;
+}
+
+.ch-featured-sandal .memoir-text {
+  margin: 1.4rem 0 1.8rem;
+  font-style: italic;
+  font-size: 1.18rem;
+  color: #4a2818;
+}
+
+/* Rhythm Grid Styling */
+.rhythm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  margin-top: 2.2rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(40, 23, 15, 0.2);
+}
+
+.rhythm-step {
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem 1.3rem;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(40, 23, 15, 0.15);
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(40, 23, 15, 0.06);
+  transition: all 0.3s ease;
+}
+
+.rhythm-step:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 10px 25px rgba(40, 23, 15, 0.12);
+}
+
+.rhythm-step .num {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #8e1824;
+  margin-bottom: 0.3rem;
+}
+
+.rhythm-step .text {
+  font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.5rem);
+  font-style: italic;
+  font-weight: 400;
+  color: #28170f;
+}
+
+@media (min-width: 900px) {
+  .ch-featured-sandal {
+    grid-template-columns: 13rem 1fr;
+    column-gap: 3.5rem;
+    row-gap: 0;
+    justify-content: center;
+  }
+  .ch-featured-sandal .mark-badge {
+    grid-row: 1 / span 20;
+    padding-top: 0.5rem;
+    text-align: right;
+  }
+  .ch-featured-sandal .ch-body {
+    grid-column: 2;
+  }
+}
+
+/* ---------- 10th Section (Kumkum Crimson & Sanctuary NPO Theme) Enhanced Design ---------- */
+.ch-featured-npo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  margin: 0;
+  padding: clamp(3.2rem, 7vw, 5.5rem) var(--gutter);
+  background: var(--kumkum);
+  color: #f7e7d2;
+  border: none;
+  box-shadow: none;
+}
+
+.ch-featured-npo .ch-npo-glow {
+  display: none;
+}
+
+.ch-featured-npo .ch-body {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+}
+
+.ch-featured-npo .mark-badge {
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ch-featured-npo .mark-badge .mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem;
+  background: rgba(231, 168, 70, 0.15);
+  border: 1px solid rgba(231, 168, 70, 0.35);
+  border-radius: 999px;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fce8c7;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  opacity: 1;
+}
+
+.ch-featured-npo .mark-badge .mark::before {
+  display: none;
+}
+
+.ch-featured-npo h2 {
+  font-weight: 300;
+  font-size: clamp(2.4rem, 1.8rem + 3.5vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 30%, #f7e7d2 70%, var(--flame) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.8rem;
+}
+
+/* NPO Pillars Grid */
+.npo-pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.npo-pillars .pillar-card {
+  padding: 1.4rem 1.6rem;
+  background: rgba(45, 12, 18, 0.55);
+  border: 1px solid rgba(231, 168, 70, 0.22);
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.npo-pillars .pillar-card:hover {
+  transform: translateY(-3px);
+  background: rgba(70, 20, 28, 0.7);
+  border-color: rgba(231, 168, 70, 0.45);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+}
+
+.npo-pillars .pillar-num {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--flame);
+  margin-bottom: 0.6rem;
+}
+
+.npo-pillars .pillar-card p {
+  font-size: clamp(1.1rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.45;
+  color: #fce8c7;
+}
+
+.ch-featured-npo .mission-text {
+  font-size: clamp(1.22rem, 1.08rem + 0.5vw, 1.45rem);
+  line-height: 1.7;
+  color: #ebe3d7;
+  margin: 1.8rem 0 2.2rem;
+}
+
+/* Sanctuary Letter Card */
+.npo-letter-card {
+  margin: 2.2rem 0;
+  padding: 2.2rem 2.5rem;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(231, 168, 70, 0.3);
+  border-radius: 20px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 15px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+}
+
+.npo-letter-card .letter-quote {
+  font-style: italic;
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  line-height: 1.65;
+  color: #f7e7d2;
+  margin-bottom: 1.2rem;
+}
+
+.npo-letter-card .letter-bold {
+  font-style: italic;
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 2rem);
+  color: #fce8c7;
+  font-weight: 400;
+}
+
+.ch-featured-npo .npo-action-group {
+  margin-top: 2.5rem;
+}
+
+.ch-featured-npo .cta {
+  display: inline-block;
+  padding: 1.05rem 2.2rem;
+  background: linear-gradient(135deg, #f7e7d2 0%, #f1dfbc 100%);
+  color: var(--kumkum);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+.ch-featured-npo .cta:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(231, 168, 70, 0.35);
+}
+
+/* Helpline Box */
+.helpline-box {
+  margin-top: 2.8rem;
+  padding: 1.6rem 2rem;
+  background: rgba(30, 8, 12, 0.65);
+  border: 1px solid rgba(231, 168, 70, 0.25);
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.helpline-box .help {
+  margin-top: 0;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #ebe3d7;
+  opacity: 0.95;
+}
+
+.helpline-box .helpline-link {
+  display: inline-block;
+  margin-left: 0.3rem;
+  padding: 0.2rem 0.7rem;
+  background: rgba(231, 168, 70, 0.18);
+  border: 1px solid rgba(231, 168, 70, 0.4);
+  border-radius: 999px;
+  color: var(--flame);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.helpline-box .helpline-link:hover {
+  background: rgba(231, 168, 70, 0.35);
+  color: #ffffff;
+}
+
+@media (min-width: 900px) {
+  .ch-featured-npo {
+    grid-template-columns: 13rem 1fr;
+    column-gap: 3.5rem;
+    row-gap: 0;
+    justify-content: center;
+  }
+  .ch-featured-npo .mark-badge {
+    grid-row: 1 / span 20;
+    padding-top: 0.5rem;
+    text-align: right;
+  }
+  .ch-featured-npo .ch-body {
+    grid-column: 2;
+  }
+}
+
+/* ==========================================================================
+   Section 05: Marriage and Motherhood (Featured Crimson Layout)
+   ========================================================================== */
+
+.ch-featured-crimson {
+  position: relative;
+  background: linear-gradient(165deg, #2b1424 0%, #36172d 45%, #230f1d 100%);
+  color: var(--moon);
+  overflow: hidden;
+  border-top: 1px solid rgba(231, 168, 70, 0.12);
+  border-bottom: 1px solid rgba(231, 168, 70, 0.12);
+}
+
+.ch-crimson-glow {
+  display: none; /* Unified background without chunky glow splits */
+}
+
+.ch-featured-crimson h2 {
+  background: linear-gradient(135deg, #ffffff 20%, #f7e7d2 60%, var(--flame) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.motherhood-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.8rem;
+}
+
+@media (min-width: 850px) {
+  .motherhood-grid {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+}
+
+.motherhood-hero-card {
+  position: relative;
+  padding: clamp(1.8rem, 3.5vw, 2.8rem);
+  background: linear-gradient(135deg, rgba(231, 168, 70, 0.09) 0%, rgba(142, 24, 36, 0.18) 100%);
+  border: 1px solid rgba(231, 168, 70, 0.28);
+  border-left: 4px solid var(--flame);
+  border-radius: 20px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 16px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.motherhood-hero-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(231, 168, 70, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 22px 50px rgba(0, 0, 0, 0.45);
+}
+
+.motherhood-hero-card::before {
+  display: none;
+}
+
+.motherhood-hero-card .lead-text {
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.55rem);
+  line-height: 1.62;
+  color: #fce8c7;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+.motherhood-insights-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  justify-content: space-between;
+}
+
+.motherhood-insight-box {
+  position: relative;
+  padding: 1.5rem 1.7rem;
+  background: rgba(35, 15, 29, 0.65);
+  border: 1px solid rgba(231, 168, 70, 0.2);
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 10px 25px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.motherhood-insight-box:hover {
+  transform: translateY(-3px);
+  background: rgba(45, 18, 37, 0.8);
+  border-color: rgba(231, 168, 70, 0.42);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+}
+
+.insight-label {
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 0.6rem;
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--flame);
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(231, 168, 70, 0.3);
+}
+
+.motherhood-insight-box p {
+  font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.22rem);
+  line-height: 1.65;
+  color: #ebe3d7;
+  margin: 0;
+}
+
+.held-card-healing {
+  margin-top: 2rem;
+  padding: clamp(1.6rem, 3.2vw, 2.4rem) clamp(1.5rem, 4vw, 3rem);
+  background: linear-gradient(90deg, rgba(142, 24, 36, 0.22) 0%, rgba(231, 168, 70, 0.12) 50%, rgba(142, 24, 36, 0.22) 100%);
+  border: 1px solid rgba(231, 168, 70, 0.32);
+  border-radius: 18px;
+  text-align: center;
+  position: relative;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 12px 35px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.held-card-healing:hover {
+  transform: scale(1.01);
+  border-color: rgba(231, 168, 70, 0.5);
+}
+
+.held-card-healing .held {
+  margin: 0;
+  font-style: italic;
+  font-size: clamp(1.6rem, 1.3rem + 1.6vw, 2.4rem);
+  color: #fce8c7;
+  line-height: 1.25;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+}
+
+/* ==========================================================================
+   Section 09: Returning to myself (Featured Dawn Layout)
+   ========================================================================== */
+
+.ch-featured-dawn {
+  position: relative;
+  background: linear-gradient(165deg, #3d1b18 0%, #4a211d 45%, #2e1311 100%);
+  color: #f6e8da;
+  overflow: hidden;
+  border-top: 1px solid rgba(231, 168, 70, 0.15);
+  border-bottom: 1px solid rgba(231, 168, 70, 0.15);
+}
+
+.ch-dawn-glow {
+  display: none; /* Unified background without chunky dual-color glows */
+}
+
+.ch-featured-dawn h2 {
+  background: linear-gradient(135deg, #ffffff 20%, #fce8c7 60%, var(--flame) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.dawn-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.8rem;
+}
+
+@media (min-width: 850px) {
+  .dawn-grid {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+}
+
+.dawn-card {
+  position: relative;
+  padding: clamp(1.6rem, 3.2vw, 2.5rem);
+  background: rgba(55, 23, 20, 0.65);
+  border: 1px solid rgba(231, 168, 70, 0.25);
+  border-radius: 20px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 14px 35px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(14px);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.dawn-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(231, 168, 70, 0.48);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
+}
+
+.dawn-wisdom-card {
+  border-left: 4px solid var(--flame);
+  background: linear-gradient(135deg, rgba(231, 168, 70, 0.1) 0%, rgba(74, 33, 29, 0.7) 100%);
+}
+
+.dawn-label {
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 0.7rem;
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--flame);
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(231, 168, 70, 0.32);
+}
+
+.dawn-card p {
+  font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.25rem);
+  line-height: 1.68;
+  color: #ebe3d7;
+  margin: 0;
+}
+
+.dawn-card .lead-text {
+  font-size: clamp(1.2rem, 1.08rem + 0.5vw, 1.45rem);
+  line-height: 1.62;
+  color: #fce8c7;
+  font-style: italic;
+}
+
+.divine-union-card {
+  position: relative;
+  margin-bottom: 1.8rem;
+  padding: clamp(1.8rem, 3.5vw, 2.6rem);
+  background: linear-gradient(135deg, rgba(231, 168, 70, 0.14) 0%, rgba(199, 122, 76, 0.22) 50%, rgba(61, 27, 24, 0.8) 100%);
+  border: 1px solid rgba(231, 168, 70, 0.35);
+  border-radius: 20px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 16px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.divine-union-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(231, 168, 70, 0.52);
+}
+
+.divine-union-card p {
+  font-size: clamp(1.15rem, 1.05rem + 0.45vw, 1.35rem);
+  line-height: 1.65;
+  color: #fce8c7;
+  font-style: italic;
+  margin: 0;
+}
+
+.held-card-shaping {
+  margin-top: 2rem;
+  padding: clamp(1.6rem, 3.2vw, 2.4rem) clamp(1.5rem, 4vw, 3rem);
+  background: linear-gradient(90deg, rgba(199, 122, 76, 0.28) 0%, rgba(231, 168, 70, 0.15) 50%, rgba(199, 122, 76, 0.28) 100%);
+  border: 1px solid rgba(231, 168, 70, 0.38);
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 14px 38px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.held-card-shaping:hover {
+  transform: scale(1.01);
+  border-color: rgba(231, 168, 70, 0.55);
+}
+
+.held-card-shaping .held {
+  margin: 0;
+  font-style: italic;
+  font-size: clamp(1.6rem, 1.3rem + 1.6vw, 2.4rem);
+  color: #fce8c7;
+  line-height: 1.25;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+}
+
+

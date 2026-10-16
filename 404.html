@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>404 — Page Not Found | Hyma Naga Jyothi</title>
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#120e18">
+
+  <!-- Favicons & Manifest -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Fonts & Styles -->
+  <link rel="preload" href="fonts/newsreader-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.min.css">
+
+  <style>
+    .not-found-wrap {
+      min-height: 85svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: clamp(3rem, 8vw, 6rem) var(--gutter);
+      position: relative;
+    }
+    .not-found-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(260px, 50vw, 540px);
+      height: clamp(260px, 50vw, 540px);
+      background: radial-gradient(circle, rgba(231, 168, 70, 0.16) 0%, rgba(142, 24, 36, 0.08) 45%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .not-found-card {
+      position: relative;
+      z-index: 1;
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+    .not-found-card h1 {
+      margin-top: 1.2rem;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 1.8rem + 3.2vw, 4.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--moon);
+    }
+    .not-found-card .lead-text {
+      margin-top: 1.5rem;
+      font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+      color: var(--ash);
+      line-height: 1.6;
+    }
+    .not-found-actions {
+      margin-top: 2.6rem;
+    }
+    .not-found-actions .cta {
+      display: inline-block;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="thread on" aria-hidden="true">
+    <span class="flame" style="--p: 0.45;"></span>
+  </div>
+
+  <main class="not-found-wrap">
+    <div class="not-found-glow" aria-hidden="true"></div>
+    <div class="not-found-card">
+      <div class="mark-badge">
+        <span class="sec-num">404</span>
+        <span class="mark">Not Found</span>
+      </div>
+      <p class="whisper">“Where are you?”</p>
+      <h1>Nothing was lost. It simply begins elsewhere.</h1>
+      <p class="lead-text">
+        I spent years looking for what I needed where it was never kept. This page does not exist, but your own ground is still right here.
+      </p>
+      <div class="not-found-actions">
+        <a class="cta" href="index.html">Return to the beginning</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>Hyma Naga Jyothi. From Kakinada to Hyderabad.</span>
+    <em>For Shiva, with Shiva.</em>
+  </footer>
+
+</body>
+
+</html>
